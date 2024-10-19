@@ -84,6 +84,34 @@ func alterarPessoa() {
     print("Dados da pessoa alterados com sucesso!")
 }
 
+func apagarPessoa() {
+    print("Digite o nome da pessoa que deseja apagar:")
+    guard let nome = readLine(), !nome.isEmpty else {
+        print("Nome inválido.")
+        return
+    }
+    
+    if pessoas.removeValue(forKey: nome) != nil {
+        print("Pessoa apagada com sucesso!")
+    } else {
+        print("Erro: Pessoa não encontrada.")
+    }
+}
+
+func buscarPessoa() {
+    print("Digite o nome da pessoa que deseja buscar:")
+    guard let nome = readLine(), !nome.isEmpty else {
+        print("Nome inválido.")
+        return
+    }
+    
+    if let dados = pessoas[nome] {
+        print("Dados da pessoa: Email: \(dados[0]), Celular: \(dados[1]), Idade: \(dados[2])")
+    } else {
+        print("Erro: Pessoa não encontrada.")
+    }
+}
+
 func iniciarPrograma() {
     var continuar = true
     
@@ -96,6 +124,10 @@ func iniciarPrograma() {
             criarPessoa()
         case "2":
             alterarPessoa()
+        case "3":
+            apagarPessoa()
+        case "4":
+            buscarPessoa()
         case "6":
             continuar = false
             print("Encerrando o programa...")
