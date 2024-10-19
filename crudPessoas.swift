@@ -112,6 +112,16 @@ func buscarPessoa() {
     }
 }
 
+func exibirTodos() {
+    if pessoas.isEmpty {
+        print("Nenhuma pessoa cadastrada.")
+    } else {
+        for (nome, dados) in pessoas {
+            print("Nome: \(nome), Email: \(dados[0]), Celular: \(dados[1]), Idade: \(dados[2])")
+        }
+    }
+}
+
 func iniciarPrograma() {
     var continuar = true
     
@@ -128,6 +138,8 @@ func iniciarPrograma() {
             apagarPessoa()
         case "4":
             buscarPessoa()
+        case "5":
+            exibirTodos()
         case "6":
             continuar = false
             print("Encerrando o programa...")
